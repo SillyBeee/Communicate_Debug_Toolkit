@@ -8,16 +8,21 @@ set(CMAKE_BUILD_TYPE "Debug")
 project(visualization_tool)
 
 include_directories(/opt/ros/humble/include)
+include_directories(${CMAKE_SOURCE_DIR}/include)  # 添加这一行
 find_package(Qt5 COMPONENTS Core Widgets REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(ament_cmake_auto REQUIRED)
+find_package(communicate_2025 REQUIRED)
 ament_auto_find_build_dependencies()
 
-add_executable(debug_tool main.cpp UI.h widget.cpp)
 ament_auto_add_executable(${PROJECT_NAME}_node
-    DIRECTORY src
+    src/visualization_tool_node.cpp
+    src/widget.cpp
 )
 
-target_link_libraries(debug_tool Qt5::Core Qt5::Widgets)
-
+# 使用 ${PROJECT_NAME}_node 作为目标名称
+target_link_libraries(${PROJECT_NAME}_node Qt5::Core Qt5::Widgets rclcpp)
+target_link_libraries(${PROJECT_NAME}_node
+    ${cpp_typesupport_target}
+)
 ament_auto_package()
