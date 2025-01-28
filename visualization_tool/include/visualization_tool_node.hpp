@@ -1,3 +1,6 @@
+#ifndef VISUALIZATION_TOOL_NODE_HPP
+#define VISUALIZATION_TOOL_NODE_HPP
+
 #include <rclcpp/rclcpp.hpp>
 #include <communicate_2025/msg/serial_info.hpp>
 #include <communicate_2025/msg/autoaim.hpp>
@@ -9,4 +12,6 @@ class visualization_node : public rclcpp::Node{
     private:
         rclcpp::Subscription<communicate_2025::msg::SerialInfo>::SharedPtr Serial_info_sub;
         rclcpp::Subscription<communicate_2025::msg::Autoaim>::SharedPtr Autoaim_sub;
-}
+};
+
+#endif // VISUALIZATION_TOOL_NODE_HPP

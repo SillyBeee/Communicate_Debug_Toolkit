@@ -9,15 +9,18 @@
   <license>TODO: License declaration</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
-  <depend>rclcpp</depend>
-  <depend>std_msgs</depend>
-  <depend>sensor_msgs</depend>
-  <depend>serial_driver</depend>
-  <depend>communicate_2025</depend>
-  <depend>communicate_2025/Autoaim.msg</depend>
-  <depend>communicate_2025/SerialInfo.msg</depend>
-  <test_depend>ament_lint_auto</test_depend>
-  <test_depend>ament_lint_common</test_depend>
+<!-- 添加构建和运行依赖 -->
+<depend>rclcpp</depend>
+<depend>std_msgs</depend>
+<depend>sensor_msgs</depend>
+<depend>communicate_2025</depend>
+
+<!-- 如果communicate_2025包含自定义消息，需添加以下依赖 -->
+<build_depend>rosidl_default_generators</build_depend>
+<exec_depend>rosidl_default_runtime</exec_depend>
+
+<!-- 声明Qt5依赖（假设使用系统Qt） -->
+<build_depend>qtbase5-dev</build_depend>
 
   <export>
     <build_type>ament_cmake</build_type>
