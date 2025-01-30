@@ -1,10 +1,16 @@
 # Communicate_Toolkit
 为Robomaster25赛季模块Communicate_2025上下位机通信设计的基于QT的调试工具，帮助使用者快速勘误与定位问题
+## 概览
+基于[ElaWidgetTool](https://github.com/Liniyous/ElaWidgetTools)与Qt5制作
+目前只支持Ubuntu22.04与Qt5.15.3(因为只在这里测试过QAQ)
+##### 主界面大概长这样
+![主界面示例图](/assets/主界面示例.png)
+支持黑白主题切换，丝滑动画，搜索等功能
 
 ## 依赖
 
 - ROS 2 Humble
-- Qt 5
+- Qt 5.15.3
 - C++11 或更高版本
 
 ## 编译和运行
