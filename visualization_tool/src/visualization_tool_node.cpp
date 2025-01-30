@@ -1,6 +1,6 @@
 #include "visualization_tool_node.hpp"
 #include <QApplication>
-#include "widget.h"
+#include "mainwindow.h"
 #include <thread>
 #include <std_msgs/msg/char.hpp>
 visualization_node::visualization_node():
@@ -16,10 +16,10 @@ rclcpp::Node("visualization_node"){
 
 void visualization_node::Serial_info_callback(const communicate_2025::msg::SerialInfo::SharedPtr msg ){
     RCLCPP_INFO(this->get_logger(), "processing_serial_info");
-    this->w.ui.down_yaw_editor->setText(QString::number(msg->yaw));
-    this->w.ui.down_pitch_editor->setText(QString::number(msg->pitch));
+    this->w.general_page->down_yaw_editor->setText(QString::number(msg->yaw));
+    this->w.general_page->down_pitch_editor->setText(QString::number(msg->pitch));
     
-    this->w.ui.down_find_bool_editor->setText([&msg]()->QString{
+    this->w.general_page->down_find_bool_editor->setText([&msg]()->QString{
         QString qstr = QString(QChar(static_cast<unsigned char>(msg->is_find.data)));
         return qstr;
     }());
@@ -28,12 +28,12 @@ void visualization_node::Serial_info_callback(const communicate_2025::msg::Seria
 
 void visualization_node::Autoaim_callback(const communicate_2025::msg::Autoaim::SharedPtr msg ){
     RCLCPP_INFO(this->get_logger(), "processing_autoaim");
-    this->w.ui.up_yaw_editor->setText(QString::number(msg->yaw));
-    this->w.ui.up_pitch_editor->setText(QString::number(msg->pitch));
+    this->w.general_page->up_yaw_editor->setText(QString::number(msg->yaw));
+    this->w.general_page->up_pitch_editor->setText(QString::number(msg->pitch));
     
-    this->w.ui.up_enemy_color_editor->setText(QString::number(msg->enemy_team_color));
-    this-> w.ui.up_mode_editor->setText(QString::number(msg->mode));
-    this->w.ui.up_rune_flag_editor->setText(QString::number(msg->rune_flag));
+    this->w.general_page->up_enemy_color_editor->setText(QString::number(msg->enemy_team_color));
+    this-> w.general_page->up_mode_editor->setText(QString::number(msg->mode));
+    this->w.general_page->up_rune_flag_editor->setText(QString::number(msg->rune_flag));
     
 }
 
