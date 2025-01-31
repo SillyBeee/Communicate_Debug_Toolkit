@@ -44,7 +44,7 @@
 
 ## Q&A
 
-如果出现了图标与字体显示错误的问题，请在项目跟目录下执行以下命令:
+如果出现了图标与字体显示错误的问题，请在项目根目录下执行以下命令:
 ```bash
 cp -r ./visualization_tool/Ela_depend/Font  /usr/share/fonts/truetype
 ```

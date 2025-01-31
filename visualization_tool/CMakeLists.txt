@@ -13,14 +13,18 @@ find_package(communicate_2025 REQUIRED)
 set(PROJECT_SOURCES
     src/visualization_tool_node.cpp
     src/mainwindow.cpp
-    Page/T_BasePage.cpp
-    Page/T_com_general.cpp
-    Page/T_About.cpp
     include/visualization_tool_node.hpp
     include/mainwindow.h
+    Page/T_BasePage.cpp
     Page/T_BasePage.h
+    Page/T_com_general.cpp
     Page/T_com_general.h
+    Page/T_About.cpp
     Page/T_About.h
+    Page/T_Engineer.h
+    Page/T_Engineer.cpp
+    Page/T_Sential.h
+    Page/T_Sential.cpp
 )
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)

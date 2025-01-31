@@ -46,14 +46,18 @@ void MainWindow::initWindow(){
 }
 
 void MainWindow::initContent(){
-    std::cout << "initContent" << std::endl;
-    // general_page = new T_com_general(this);
-    
+    // std::cout << "initContent" << std::endl;
     about_page = new T_About(this);
     general_page = new T_Com_general(this);
+    sential_page = new T_Sential(this);
+    engineer_page = new T_Engineer(this);
+
     addPageNode("通信总览",general_page,ElaIconType::MagnifyingGlassChart);
+    addPageNode("哨兵&英雄数据总览",sential_page,ElaIconType::Robot);
+    addPageNode("工程数据总览",engineer_page,ElaIconType::Wrench);
     addPageNode("关于",about_page,ElaIconType::User);
-    std::cout << "initContent  Finished" << std::endl;
+    
+    // std::cout << "initContent  Finished" << std::endl;
 }
 
 
