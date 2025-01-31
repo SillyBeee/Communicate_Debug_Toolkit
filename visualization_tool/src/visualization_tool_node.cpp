@@ -8,7 +8,7 @@ rclcpp::Node("visualization_node"){
     Serial_info_sub = this->create_subscription<communicate_2025::msg::SerialInfo>(
         "/shoot_info", rclcpp::SensorDataQoS(), std::bind(&visualization_node::Serial_info_callback, this, std::placeholders::_1 ));
     Autoaim_sub = this->create_subscription<communicate_2025::msg::Autoaim>(
-        "/communicate/debug/autoaim", rclcpp::SensorDataQoS(), std::bind(&visualization_node::Autoaim_callback, this, std::placeholders::_1 ));
+        "/communicate/autoaim", rclcpp::SensorDataQoS(), std::bind(&visualization_node::Autoaim_callback, this, std::placeholders::_1 ));
 
     
 }

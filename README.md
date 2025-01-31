@@ -41,6 +41,14 @@
     ros2 run visualization_tool visualization_tool_node
     ```
 
+
+## Q&A
+
+如果出现了图标与字体显示错误的问题，请在项目跟目录下执行以下命令:
+```bash
+cp -r ./visualization_tool/Ela_depend/Font  /usr/share/fonts/truetype
+```
+
 ## 使用说明
 
 1. 启动程序后，将会显示一个基于 Qt 的 GUI 界面。
