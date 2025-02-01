@@ -52,7 +52,7 @@ cp -r ./visualization_tool/Ela_depend/Font  /usr/share/fonts/truetype
 ## 使用说明
 
 1. 启动程序后，将会显示一个基于 Qt 的 GUI 界面。
-2. 通过订阅 `/shoot_info` 和 `/communicate/debug/autoaim` 话题，实时显示相关信息。
+2. 通过订阅 `/shoot_info` 和 `/communicate/autoaim` 话题，实时显示相关信息。
 
 
 

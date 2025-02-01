@@ -38,17 +38,27 @@ T_Com_general::T_Com_general(QWidget* parent)
     up_rune_flag_label->setTextPixelSize(14);
     //左侧上位机发下位机数据框
     down_find_bool_editor = new ElaLineEdit(this);
+    down_find_bool_editor->setReadOnly(true);
     down_pitch_editor = new ElaLineEdit(this);
+    down_pitch_editor->setReadOnly(true);
     down_yaw_editor = new ElaLineEdit(this);
+    down_yaw_editor->setReadOnly(true);
     //右侧下位机发上位机数据框
     up_enemy_color_editor = new ElaLineEdit(this);
+    up_enemy_color_editor->setReadOnly(true);
     up_pitch_editor = new ElaLineEdit(this);
+    up_pitch_editor->setReadOnly(true);
     up_yaw_editor = new ElaLineEdit(this);
+    up_yaw_editor->setReadOnly(true);
     up_mode_editor = new ElaLineEdit(this);
+    up_mode_editor->setReadOnly(true);
     up_rune_flag_editor = new ElaLineEdit(this);
+    up_rune_flag_editor->setReadOnly(true);
+
     //左布局
 
     QHBoxLayout* left1layout = new QHBoxLayout();
+    left1layout->setSizeConstraint(QLayout::SetFixedSize);
     QHBoxLayout* left2layout = new QHBoxLayout();
     QHBoxLayout* left3layout = new QHBoxLayout();
     QHBoxLayout* left0layout = new QHBoxLayout();
@@ -69,6 +79,7 @@ T_Com_general::T_Com_general(QWidget* parent)
     left_total_layout->addLayout(left3layout);
     left_total_layout->setSpacing(20);
     left_total_layout->setAlignment(Qt::AlignCenter);
+
     //右布局
 
     QHBoxLayout* right1layout = new QHBoxLayout();

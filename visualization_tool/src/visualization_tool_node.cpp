@@ -5,12 +5,43 @@
 #include <std_msgs/msg/char.hpp>
 visualization_node::visualization_node():
 rclcpp::Node("visualization_node"){
+    //自瞄话题
     Serial_info_sub = this->create_subscription<communicate_2025::msg::SerialInfo>(
-        "/shoot_info", rclcpp::SensorDataQoS(), std::bind(&visualization_node::Serial_info_callback, this, std::placeholders::_1 ));
-    Autoaim_sub = this->create_subscription<communicate_2025::msg::Autoaim>(
-        "/communicate/autoaim", rclcpp::SensorDataQoS(), std::bind(&visualization_node::Autoaim_callback, this, std::placeholders::_1 ));
+        "/shoot_info", rclcpp::SensorDataQoS(),
+        std::bind(&visualization_node::Serial_info_callback,
+        this, std::placeholders::_1 ));
 
-    
+    Autoaim_sub = this->create_subscription<communicate_2025::msg::Autoaim>(
+        "/communicate/autoaim",
+        rclcpp::SensorDataQoS(), 
+        std::bind(&visualization_node::Autoaim_callback, 
+        this, std::placeholders::_1 ));
+    //机械臂(工程)话题
+    Arm_control_sub = this->create_subscription<std_msgs::msg::Float32MultiArray>(
+        "/engineer/arm_control" , 
+        rclcpp::SensorDataQoS(), 
+        std::bind(&visualization_node::Arm_control_callback, 
+        this, std::placeholders::_1 ));
+
+    Interaction_control_sub = this->create_subscription<std_msgs::msg::Int32MultiArray>(
+        "/engineer/interaction_control",
+        rclcpp::SensorDataQoS(),
+        std::bind(&visualization_node::Interaction_control_callback,
+        this, std::placeholders::_1 ));
+
+    Arm_info_sub = this->create_subscription<std_msgs::msg::Float32MultiArray>(
+        "/communicate/engineerarm",
+        rclcpp::SensorDataQoS(),
+        std::bind(&visualization_node::Arm_info_callback,
+        this, std::placeholders::_1 ));
+
+    Interaction_control_sub = this->create_subscription<std_msgs::msg::Int32MultiArray>(
+        "/communicate/engineerinteraction",
+        rclcpp::SensorDataQoS(),
+        std::bind(&visualization_node::Interaction_info_callback,
+        this, std::placeholders::_1 ));
+
+
 }
 
 
