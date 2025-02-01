@@ -8,6 +8,8 @@ class T_Engineer : public ElaWidget
 {
     Q_OBJECT
 public:
+
+    
     explicit T_Engineer(QWidget* parent = nullptr);
     ~T_Engineer();
 

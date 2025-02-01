@@ -44,7 +44,7 @@ rclcpp::Node("visualization_node"){
 
 }
 
-
+//自瞄数据回调函数
 void visualization_node::Serial_info_callback(const communicate_2025::msg::SerialInfo::SharedPtr msg ){
     RCLCPP_INFO(this->get_logger(), "processing_serial_info");
     this->w.general_page->down_yaw_editor->setText(QString::number(msg->yaw));
@@ -68,7 +68,28 @@ void visualization_node::Autoaim_callback(const communicate_2025::msg::Autoaim::
     
 }
 
+//机械臂(工程)数据回调函数
 
+void visualization_node::Arm_control_callback(const std_msgs::msg::Float32MultiArray::SharedPtr msg ){
+    
+}
+
+
+void visualization_node::Interaction_control_callback(const std_msgs::msg::Int32MultiArray::SharedPtr msg ){
+    
+}
+
+
+void visualization_node::Arm_info_callback(const std_msgs::msg::Float32MultiArray::SharedPtr msg ){
+    
+}
+
+
+
+
+void visualization_node::Interaction_info_callback(const std_msgs::msg::Int32MultiArray::SharedPtr msg ){
+    
+}
 
 
 int main(int argc, char *argv[]) {
