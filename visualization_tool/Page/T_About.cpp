@@ -43,7 +43,7 @@ T_About::T_About(QWidget* parent)
     ElaText* helperText = new ElaText("Based on Qt5 & ElaWidgetsUI", this);
     helperText->setWordWrap(false);
     helperText->setTextPixelSize(14);
-    ElaText* copyrightText = new ElaText("CopyLeft © 2024 SillyBee", this);
+    ElaText* copyrightText = new ElaText("CopyLeft © 2025 SillyBee", this);
     copyrightText->setWordWrap(false);
     copyrightText->setTextPixelSize(14);
 

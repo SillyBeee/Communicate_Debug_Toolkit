@@ -71,24 +71,36 @@ void visualization_node::Autoaim_callback(const communicate_2025::msg::Autoaim::
 //机械臂(工程)数据回调函数
 
 void visualization_node::Arm_control_callback(const std_msgs::msg::Float32MultiArray::SharedPtr msg ){
-    
+    this->w.engineer_page->arm_control_h0_edit->setText(QString::number(msg->data[0]));
+    this->w.engineer_page->arm_control_x1_edit->setText(QString::number(msg->data[1]));
+    this->w.engineer_page->arm_control_q2_edit->setText(QString::number(msg->data[2]));
+    this->w.engineer_page->arm_control_q3_edit->setText(QString::number(msg->data[3]));
+    this->w.engineer_page->arm_control_q4_edit->setText(QString::number(msg->data[4]));
+    this->w.engineer_page->arm_control_q5_edit->setText(QString::number(msg->data[5]));
+    this->w.engineer_page->arm_control_q6_edit->setText(QString::number(msg->data[6]));
 }
-
-
 void visualization_node::Interaction_control_callback(const std_msgs::msg::Int32MultiArray::SharedPtr msg ){
-    
+    this->w.engineer_page->interaction_control_type_edit->setText(QString::number(msg->data[0]));
+    this->w.engineer_page->interaction_control_content_edit->setText(QString::number(msg->data[1]));
 }
 
 
 void visualization_node::Arm_info_callback(const std_msgs::msg::Float32MultiArray::SharedPtr msg ){
-    
+    this->w.engineer_page->arm_info_h0_edit->setText(QString::number(msg->data[0]));
+    this->w.engineer_page->arm_info_x1_edit->setText(QString::number(msg->data[1]));
+    this->w.engineer_page->arm_info_q2_edit->setText(QString::number(msg->data[2]));
+    this->w.engineer_page->arm_info_q3_edit->setText(QString::number(msg->data[3]));
+    this->w.engineer_page->arm_info_q4_edit->setText(QString::number(msg->data[4]));
+    this->w.engineer_page->arm_info_q5_edit->setText(QString::number(msg->data[5]));
+    this->w.engineer_page->arm_info_q6_edit->setText(QString::number(msg->data[6]));
 }
 
 
 
 
 void visualization_node::Interaction_info_callback(const std_msgs::msg::Int32MultiArray::SharedPtr msg ){
-    
+    this->w.engineer_page->interaction_info_type_edit->setText(QString::number(msg->data[0]));
+    this->w.engineer_page->interaction_info_content_edit->setText(QString::number(msg->data[1]));
 }
 
 

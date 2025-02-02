@@ -15,7 +15,7 @@ T_Engineer::T_Engineer(QWidget* parent)
     setWindowButtonFlags(ElaAppBarType::CloseButtonHint);
     
     QFont font;
-    font.setPointSize(15);
+    font.setPointSize(12);
     setFont(font);
 
     // TODO:机械臂控制
@@ -36,13 +36,21 @@ T_Engineer::T_Engineer(QWidget* parent)
     ElaText* arm_control_q6_label = new ElaText("腕关节旋转roll: q6", this);
     arm_control_q6_label->setFont(font);
 
-    ElaLineEdit* arm_control_h0_edit = new ElaLineEdit(this);
-    ElaLineEdit* arm_control_x1_edit = new ElaLineEdit(this);
-    ElaLineEdit* arm_control_q2_edit = new ElaLineEdit(this);
-    ElaLineEdit* arm_control_q3_edit = new ElaLineEdit(this);
-    ElaLineEdit* arm_control_q4_edit = new ElaLineEdit(this);
-    ElaLineEdit* arm_control_q5_edit = new ElaLineEdit(this);
-    ElaLineEdit* arm_control_q6_edit = new ElaLineEdit(this);
+    arm_control_h0_edit = new ElaLineEdit(this);
+    arm_control_x1_edit = new ElaLineEdit(this);
+    arm_control_q2_edit = new ElaLineEdit(this);
+    arm_control_q3_edit = new ElaLineEdit(this);
+    arm_control_q4_edit = new ElaLineEdit(this);
+    arm_control_q5_edit = new ElaLineEdit(this);
+    arm_control_q6_edit = new ElaLineEdit(this);
+
+    arm_control_h0_edit->setReadOnly(true);
+    arm_control_x1_edit->setReadOnly(true);
+    arm_control_q2_edit->setReadOnly(true);
+    arm_control_q3_edit->setReadOnly(true);
+    arm_control_q4_edit->setReadOnly(true);
+    arm_control_q5_edit->setReadOnly(true);
+    arm_control_q6_edit->setReadOnly(true);
     
     QHBoxLayout* arm_control_text_layout = new QHBoxLayout();
     QHBoxLayout* arm_control_h0_layout = new QHBoxLayout();
@@ -102,13 +110,21 @@ T_Engineer::T_Engineer(QWidget* parent)
     ElaText* arm_info_q6_label = new ElaText("腕关节旋转roll: q6", this);
     arm_info_q6_label->setFont(font);
 
-    ElaLineEdit* arm_info_h0_edit = new ElaLineEdit(this);
-    ElaLineEdit* arm_info_x1_edit = new ElaLineEdit(this);
-    ElaLineEdit* arm_info_q2_edit = new ElaLineEdit(this);
-    ElaLineEdit* arm_info_q3_edit = new ElaLineEdit(this);
-    ElaLineEdit* arm_info_q4_edit = new ElaLineEdit(this);
-    ElaLineEdit* arm_info_q5_edit = new ElaLineEdit(this);
-    ElaLineEdit* arm_info_q6_edit = new ElaLineEdit(this);
+    arm_info_h0_edit = new ElaLineEdit(this);
+    arm_info_x1_edit = new ElaLineEdit(this);
+    arm_info_q2_edit = new ElaLineEdit(this);
+    arm_info_q3_edit = new ElaLineEdit(this);
+    arm_info_q4_edit = new ElaLineEdit(this);
+    arm_info_q5_edit = new ElaLineEdit(this);
+    arm_info_q6_edit = new ElaLineEdit(this);
+
+    arm_info_h0_edit->setReadOnly(true);
+    arm_info_x1_edit->setReadOnly(true);
+    arm_info_q2_edit->setReadOnly(true);
+    arm_info_q3_edit->setReadOnly(true);
+    arm_info_q4_edit->setReadOnly(true);
+    arm_info_q5_edit->setReadOnly(true);
+    arm_info_q6_edit->setReadOnly(true);
     
     QHBoxLayout* arm_info_text_layout = new QHBoxLayout();
     QHBoxLayout* arm_info_h0_layout = new QHBoxLayout();
@@ -159,8 +175,11 @@ T_Engineer::T_Engineer(QWidget* parent)
     ElaText* interaction_control_content_label = new ElaText("content", this);
     interaction_control_content_label->setFont(font);
 
-    ElaLineEdit* interaction_control_type_edit = new ElaLineEdit(this);
-    ElaLineEdit* interaction_control_content_edit = new ElaLineEdit(this);
+    interaction_control_type_edit = new ElaLineEdit(this);
+    interaction_control_content_edit = new ElaLineEdit(this);
+
+    interaction_control_content_edit->setReadOnly(true);
+    interaction_control_type_edit->setReadOnly(true);
 
     QHBoxLayout* interaction_control_text_layout = new QHBoxLayout();
     QHBoxLayout* interaction_control_type_layout = new QHBoxLayout();
@@ -195,8 +214,11 @@ T_Engineer::T_Engineer(QWidget* parent)
     ElaText* interaction_info_content_label = new ElaText("content", this);
     interaction_info_content_label->setFont(font);
 
-    ElaLineEdit* interaction_info_type_edit = new ElaLineEdit(this);
-    ElaLineEdit* interaction_info_content_edit = new ElaLineEdit(this);
+    interaction_info_type_edit = new ElaLineEdit(this);
+    interaction_info_content_edit = new ElaLineEdit(this);
+
+    interaction_info_content_edit->setReadOnly(true);
+    interaction_info_type_edit->setReadOnly(true);
 
     QHBoxLayout* interaction_info_text_layout = new QHBoxLayout();
     QHBoxLayout* interaction_info_type_layout = new QHBoxLayout();
