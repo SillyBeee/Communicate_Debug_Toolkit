@@ -248,12 +248,12 @@ T_Engineer::T_Engineer(QWidget* parent)
 
     main1_layout->addLayout(arm_control_layout);
     main1_layout->addLayout(interaction_control_layout);
-    main1_layout->setSpacing(10);
+    main1_layout->setSpacing(60);
     main1_layout->setAlignment(arm_control_layout, Qt::AlignCenter);
 
     main2_layout->addLayout(arm_info_layout);
     main2_layout->addLayout(interaction_info_layout);
-    main2_layout->setSpacing(10);
+    main2_layout->setSpacing(60);
     main2_layout->setAlignment(arm_info_layout, Qt::AlignCenter);
 
     main_layout->addLayout(main1_layout);

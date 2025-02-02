@@ -29,7 +29,6 @@ MainWindow::MainWindow(QWidget *parent)
 
 
 void MainWindow::initWindow(){
-    setWindowIcon(QIcon(":/ElaWidgetTool.png"));
     resize(1200, 720);
     // ElaLog::getInstance()->initMessageLog(true);
     // eTheme->setThemeMode(ElaThemeType::Dark);
@@ -40,7 +39,7 @@ void MainWindow::initWindow(){
     // setUserInfoCardTitle("Ela Tool");
     // setUserInfoCardSubTitle("Liniyous@gmail.com");
     setWindowTitle("Communicate Debug Toolkit");
-    // setIsStayTop(true);
+    setIsStayTop(false);
     setUserInfoCardVisible(false);
     setAttribute(Qt::WA_Hover, true);
 }
@@ -51,8 +50,10 @@ void MainWindow::initContent(){
     general_page = new T_Com_general(this);
     sential_page = new T_Sential(this);
     engineer_page = new T_Engineer(this);
+    game_info_page = new T_Game_info(this);
 
     addPageNode("通信总览",general_page,ElaIconType::MagnifyingGlassChart);
+    addPageNode("比赛数据总览",game_info_page,ElaIconType::GamepadModern);
     addPageNode("哨兵&英雄数据总览",sential_page,ElaIconType::Robot);
     addPageNode("工程数据总览",engineer_page,ElaIconType::Wrench);
     addPageNode("关于",about_page,ElaIconType::User);

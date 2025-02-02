@@ -2,6 +2,7 @@
 #define T_SENTIAL_CPP
 
 #include "T_Sential.h"
+#include "health_bar.h"
 T_Sential::T_Sential(QWidget* parent)
     : ElaWidget(parent)
 {
@@ -9,6 +10,11 @@ T_Sential::T_Sential(QWidget* parent)
     this->setIsFixedSize(true);
     setWindowModality(Qt::ApplicationModal);
     setWindowButtonFlags(ElaAppBarType::CloseButtonHint);
+
+    
+    
+
+
 }
 
 T_Sential::~T_Sential(){

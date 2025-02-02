@@ -8,6 +8,7 @@
 #include "T_About.h"
 #include "T_Engineer.h"
 #include "T_Sential.h"
+#include "T_Game_info.h"
 
 class T_Home;
 class T_Icon;
@@ -42,6 +43,7 @@ public:
     T_About* about_page{nullptr};
     T_Engineer* engineer_page{nullptr};
     T_Sential* sential_page{nullptr};
+    T_Game_info* game_info_page{nullptr};
 
 private:
     bool m_isDragging;

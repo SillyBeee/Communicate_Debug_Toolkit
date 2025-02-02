@@ -25,6 +25,11 @@ set(PROJECT_SOURCES
     Page/T_Engineer.cpp
     Page/T_Sential.h
     Page/T_Sential.cpp
+    Page/T_Game_info.h
+    Page/T_Game_info.cpp
+    Page/health_bar.h
+    Page/health_bar.cpp
+    
 )
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
