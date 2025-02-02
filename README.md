@@ -1,4 +1,4 @@
-# Communicate_Toolkit
+# Communicate_Toolkit 
 为Robomaster25赛季模块Communicate_2025上下位机通信设计的基于QT的调试工具，帮助使用者快速勘误与定位问题
 ## 概览
 基于[ElaWidgetTool](https://github.com/Liniyous/ElaWidgetTools)与Qt5制作
@@ -18,10 +18,11 @@
 ### 编译
 
 1. 确保已安装 ROS 2 和 Qt 5。
-2. 克隆此项目：
+2. 克隆此项目与子模块：
 
     ```bash
     git clone https://github.com/SillyBeee/Communicate_Debug_Toolkit.git
+    git submodule update --init --recursive
     ```
 
 3. 编译项目：
@@ -48,14 +49,17 @@
 ```bash
 cp -r ./visualization_tool/Ela_depend/Font  /usr/share/fonts/truetype
 ```
+或打开项目根目录下的```visualization_tool/Ela_depend/Font```文件夹，安装其字体
 
 ## 使用说明
 
 1. 启动程序后，将会显示一个基于 Qt 的 GUI 界面。
-2. 通过订阅 `/shoot_info` 和 `/communicate/autoaim` 话题，实时显示相关信息。
+2. 通过订阅所有Communicate_2025的话题，并实时更新显示相关信息。
 
 
 
 ## 许可证
 
 此项目使用 MIT 许可证。详情请参阅 LICENSE 文件。
+
+##### 如果你在项目使用中遇到了任何疑问或有任何建议，请提出 Issue 或联系作者。

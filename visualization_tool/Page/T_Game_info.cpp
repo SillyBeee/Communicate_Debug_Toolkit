@@ -85,19 +85,36 @@ T_Game_info::T_Game_info(QWidget* parent)
     Stage_remain_time_editor = new ElaLineEdit(this);
     remaining_gold_coin_editor = new ElaLineEdit(this);
 
+    enemy_color_editor->setReadOnly(true);
+    game_progress_editor->setReadOnly(true);
+    Stage_remain_time_editor->setReadOnly(true);
+    remaining_gold_coin_editor->setReadOnly(true);
+
     r1_robot_position_editor = new ElaLineEdit(this);
+    r1_robot_position_editor->setReadOnly(true);
     r2_robot_position_editor = new ElaLineEdit(this);
+    r2_robot_position_editor->setReadOnly(true);
     r3_robot_position_editor = new ElaLineEdit(this);
+    r3_robot_position_editor->setReadOnly(true);
     r4_robot_position_editor = new ElaLineEdit(this);
+    r4_robot_position_editor->setReadOnly(true);
     r5_robot_position_editor = new ElaLineEdit(this);
+    r5_robot_position_editor->setReadOnly(true);
     r7_robot_position_editor = new ElaLineEdit(this);
+    r7_robot_position_editor->setReadOnly(true);
 
     b1_robot_position_editor = new ElaLineEdit(this);
+    b1_robot_position_editor->setReadOnly(true);
     b2_robot_position_editor = new ElaLineEdit(this);
+    b2_robot_position_editor->setReadOnly(true);
     b3_robot_position_editor = new ElaLineEdit(this);
+    b3_robot_position_editor->setReadOnly(true);
     b4_robot_position_editor = new ElaLineEdit(this);
+    b4_robot_position_editor->setReadOnly(true);
     b5_robot_position_editor = new ElaLineEdit(this);
+    b5_robot_position_editor->setReadOnly(true);
     b7_robot_position_editor = new ElaLineEdit(this);
+    b7_robot_position_editor->setReadOnly(true);
     
 
     //TODO: 红方布局
