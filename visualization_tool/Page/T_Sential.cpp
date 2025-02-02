@@ -25,6 +25,8 @@ T_Sential::T_Sential(QWidget* parent)
     Chassis_vy_text->setFont(font);
     Chassis_vx_editor = new ElaLineEdit(this);
     Chassis_vy_editor = new ElaLineEdit(this);
+    Chassis_vx_editor->setReadOnly(true);
+    Chassis_vy_editor->setReadOnly(true);
 
     QHBoxLayout* Chassis_vx_layout = new QHBoxLayout;
     QHBoxLayout* Chassis_vy_layout = new QHBoxLayout;
@@ -43,6 +45,8 @@ T_Sential::T_Sential(QWidget* parent)
     Interaction_content_text->setFont(font);
     Interaction_type_editor = new ElaLineEdit(this);
     Interaction_content_editor = new ElaLineEdit(this);
+    Interaction_type_editor->setReadOnly(true);
+    Interaction_content_editor->setReadOnly(true);
 
     QHBoxLayout* Interaction_type_layout = new QHBoxLayout;
     QHBoxLayout* Interaction_content_layout = new QHBoxLayout;
@@ -61,6 +65,8 @@ T_Sential::T_Sential(QWidget* parent)
     moudle_ctl_content_text->setFont(font);
     moudle_ctl_type_editor = new ElaLineEdit(this);
     moudle_ctl_content_editor = new ElaLineEdit(this);
+    moudle_ctl_type_editor->setReadOnly(true);
+    moudle_ctl_content_editor->setReadOnly(true);
 
     QHBoxLayout* moudle_ctl_type_layout = new QHBoxLayout;
     QHBoxLayout* moudle_ctl_content_layout = new QHBoxLayout;
@@ -85,6 +91,10 @@ T_Sential::T_Sential(QWidget* parent)
     command_target_y_editor = new ElaLineEdit(this);
     command_keyboard_editor = new ElaLineEdit(this);
     command_robot_id_editor = new ElaLineEdit(this);
+    command_target_x_editor->setReadOnly(true);
+    command_target_y_editor->setReadOnly(true);
+    command_keyboard_editor->setReadOnly(true);
+    command_robot_id_editor->setReadOnly(true);
 
     QHBoxLayout* command_target_x_layout = new QHBoxLayout;
     QHBoxLayout* command_target_y_layout = new QHBoxLayout;
@@ -108,6 +118,7 @@ T_Sential::T_Sential(QWidget* parent)
     ElaText* hitted_text = new ElaText("受击打",this);
     hitted_text->setFont(font);
     hitted_editor = new ElaLineEdit(this);
+    hitted_editor->setReadOnly(true);
 
     QHBoxLayout* hitted_layout = new QHBoxLayout;
     hitted_layout->addWidget(hitted_text);
@@ -127,6 +138,10 @@ T_Sential::T_Sential(QWidget* parent)
     shoot_status_42_editor = new ElaLineEdit(this);
     shoot_status_heat_editor = new ElaLineEdit(this);
     shoot_frequency_editor = new ElaLineEdit(this);
+    shoot_status_17_editor->setReadOnly(true);
+    shoot_status_42_editor->setReadOnly(true);
+    shoot_status_heat_editor->setReadOnly(true);
+    shoot_frequency_editor->setReadOnly(true);
 
     QHBoxLayout* shoot_status_17_layout = new QHBoxLayout;
     QHBoxLayout* shoot_status_42_layout = new QHBoxLayout;

@@ -8,6 +8,7 @@ find_package(Qt5 COMPONENTS Widgets REQUIRED)
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
+find_package(geometry_msgs REQUIRED)
 find_package(communicate_2025 REQUIRED)
 
 set(PROJECT_SOURCES
@@ -60,6 +61,7 @@ target_link_libraries(${PROJECT_NAME}_node
 ament_target_dependencies(${PROJECT_NAME}_node
     rclcpp
     std_msgs
+    geometry_msgs
     communicate_2025
 )
 

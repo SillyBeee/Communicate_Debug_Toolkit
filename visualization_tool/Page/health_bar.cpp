@@ -37,4 +37,8 @@ void HealthBar::paintEvent(QPaintEvent *event) {
     // 绘制血条
     painter.setBrush(QColor(255, 0, 0));
     painter.drawRect(0, 0, healthWidth, height());
+
+    QString healthText = QString("%1").arg(currentHealth);
+    painter.setPen(Qt::black);
+    painter.drawText(rect(), Qt::AlignCenter, healthText);
 }

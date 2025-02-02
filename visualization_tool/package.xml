@@ -12,6 +12,7 @@
 <!-- 添加构建和运行依赖 -->
 <depend>rclcpp</depend>
 <depend>std_msgs</depend>
+<depend>geometry_msgs</depend>
 <depend>sensor_msgs</depend>
 <depend>communicate_2025</depend>
 
