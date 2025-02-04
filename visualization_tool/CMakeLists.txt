@@ -30,7 +30,8 @@ set(PROJECT_SOURCES
     Page/T_Game_info.cpp
     Page/health_bar.h
     Page/health_bar.cpp
-    
+    Page/T_Fake_info_sender.h
+    Page/T_Fake_info_sender.cpp
 )
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)

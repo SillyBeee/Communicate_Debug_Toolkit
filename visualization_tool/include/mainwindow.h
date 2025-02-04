@@ -9,7 +9,7 @@
 #include "T_Engineer.h"
 #include "T_Sential.h"
 #include "T_Game_info.h"
-
+#include "T_Fake_info_sender.h"
 class T_Home;
 class T_Icon;
 class T_ElaScreen;
@@ -44,6 +44,7 @@ public:
     T_Engineer* engineer_page{nullptr};
     T_Sential* sential_page{nullptr};
     T_Game_info* game_info_page{nullptr};
+    T_Fake_info_sender* fake_info_sender_page{nullptr};
 
 private:
     bool m_isDragging;

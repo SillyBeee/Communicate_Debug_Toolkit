@@ -51,11 +51,13 @@ void MainWindow::initContent(){
     sential_page = new T_Sential(this);
     engineer_page = new T_Engineer(this);
     game_info_page = new T_Game_info(this);
+    fake_info_sender_page = new T_Fake_info_sender(this);
 
     addPageNode("通信总览",general_page,ElaIconType::MagnifyingGlassChart);
     addPageNode("比赛数据总览",game_info_page,ElaIconType::GamepadModern);
     addPageNode("哨兵&英雄数据总览",sential_page,ElaIconType::Robot);
     addPageNode("工程数据总览",engineer_page,ElaIconType::Wrench);
+    addPageNode("机械臂假消息发送器",fake_info_sender_page,ElaIconType::MessageDots);
     addPageNode("关于",about_page,ElaIconType::User);
     
     // std::cout << "initContent  Finished" << std::endl;
