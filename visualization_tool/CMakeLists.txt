@@ -28,8 +28,8 @@ set(PROJECT_SOURCES
     Page/T_Sential.cpp
     Page/T_Game_info.h
     Page/T_Game_info.cpp
-    Page/health_bar.h
-    Page/health_bar.cpp
+    include/health_bar.h
+    src/health_bar.cpp
     Page/T_Fake_info_sender.h
     Page/T_Fake_info_sender.cpp
 )
