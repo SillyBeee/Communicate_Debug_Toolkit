@@ -127,6 +127,35 @@ rclcpp::Node("visualization_node"){
         std::bind(&visualization_node::game_info_callback,
         this, std::placeholders::_1 ));
     
+
+
+
+    Fake_arm_control_pub = this->create_publisher<std_msgs::msg::Float32MultiArray>(
+        "/engineer/arm_control", rclcpp::SensorDataQoS());
+
+    Faker_arm_thread = std::thread([this](){
+        rclcpp::WallRate loop_rate(0.05);
+        while (rclcpp::ok()){
+            if (this->w.fake_info_sender_page->publish_flag){
+                auto msg = std_msgs::msg::Float32MultiArray();
+                msg.data.push_back(this->w.fake_info_sender_page->arm_h0_slider->value()/100.0);
+                msg.data.push_back(this->w.fake_info_sender_page->arm_x1_slider->value()/100.0);
+                msg.data.push_back(this->w.fake_info_sender_page->arm_q2_slider->value()/100.0);
+                msg.data.push_back(this->w.fake_info_sender_page->arm_q3_slider->value()/100.0);
+                msg.data.push_back(this->w.fake_info_sender_page->arm_q4_slider->value()/100.0);
+                msg.data.push_back(this->w.fake_info_sender_page->arm_q5_slider->value()/100.0);
+                msg.data.push_back(this->w.fake_info_sender_page->arm_q6_slider->value()/100.0);
+                std::cout<<"publish"<<msg.data[0]<<","
+                <<msg.data[1]<<","
+                <<msg.data[2]<<","
+                <<msg.data[3]<<","
+                <<msg.data[4]<<","
+                <<msg.data[5]<<","
+                <<std::endl;
+                Fake_arm_control_pub->publish(msg);
+            }
+        }
+    });
 }
 
 //自瞄数据回调函数
@@ -332,7 +361,12 @@ void visualization_node::building_hp_callback(const std_msgs::msg::Int32MultiArr
     this->w.game_info_page->blue_base_hp_bar->setHealth(msg->data[3]);
 }
 
-
+visualization_node::~visualization_node(){
+    if (Faker_arm_thread.joinable()) {
+            Faker_arm_thread.join();
+        }
+    //...existing code...
+}
 
 
 

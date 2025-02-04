@@ -9,9 +9,12 @@
 #include <std_msgs/msg/int32_multi_array.hpp>
 #include <geometry_msgs/msg/twist.hpp>
 #include <atomic>
+#include <thread>
+#include <chrono>
 class visualization_node : public rclcpp::Node{
     public:
         visualization_node();
+        ~visualization_node();
         //自瞄通信回调
         void Serial_info_callback(const communicate_2025::msg::SerialInfo::SharedPtr msg );
         void Autoaim_callback(const communicate_2025::msg::Autoaim::SharedPtr msg );
@@ -40,6 +43,8 @@ class visualization_node : public rclcpp::Node{
 
         
         std::atomic<int> is_blue{-1};
+
+        // std::thread 
 
         MainWindow w;
     private:
@@ -70,6 +75,10 @@ class visualization_node : public rclcpp::Node{
         rclcpp::Subscription<std_msgs::msg::Int32MultiArray>::SharedPtr game_info_sub;
         
 
+
+        rclcpp::Publisher<std_msgs::msg::Float32MultiArray>::SharedPtr Fake_arm_control_pub;
+
+        std::thread Faker_arm_thread;
 };      
 
 #endif // VISUALIZATION_TOOL_NODE_HPP
