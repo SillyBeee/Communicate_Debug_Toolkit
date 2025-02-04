@@ -145,13 +145,13 @@ rclcpp::Node("visualization_node"){
                 msg.data.push_back(this->w.fake_info_sender_page->arm_q4_slider->value()/100.0);
                 msg.data.push_back(this->w.fake_info_sender_page->arm_q5_slider->value()/100.0);
                 msg.data.push_back(this->w.fake_info_sender_page->arm_q6_slider->value()/100.0);
-                std::cout<<"publish"<<msg.data[0]<<","
-                <<msg.data[1]<<","
-                <<msg.data[2]<<","
-                <<msg.data[3]<<","
-                <<msg.data[4]<<","
-                <<msg.data[5]<<","
-                <<std::endl;
+                // std::cout<<"publish"<<msg.data[0]<<","
+                // <<msg.data[1]<<","
+                // <<msg.data[2]<<","
+                // <<msg.data[3]<<","
+                // <<msg.data[4]<<","
+                // <<msg.data[5]<<","
+                // <<std::endl;
                 Fake_arm_control_pub->publish(msg);
             }
         }
