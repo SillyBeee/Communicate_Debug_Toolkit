@@ -60,7 +60,7 @@ rclcpp::Node("visualization_node"){
         std::bind(&visualization_node::Moudle_ctl_callback,
         this, std::placeholders::_1 ));
 
-    Command_sub = this->create_subscription<std_msgs::msg::Int32MultiArray>(
+    Command_sub = this->create_subscription<communicate_2025::msg::Command>(
         "/communicate/command",
         rclcpp::SensorDataQoS(),
         std::bind(&visualization_node::Command_callback,
@@ -230,11 +230,11 @@ void visualization_node::Moudle_ctl_callback(const std_msgs::msg::Int32MultiArra
     this->w.sential_page->moudle_ctl_content_editor->setText(QString::number(msg->data[1]));
 }
 
-void visualization_node::Command_callback(const std_msgs::msg::Int32MultiArray::SharedPtr msg ){
-    this->w.sential_page->command_target_x_editor->setText(QString::number(msg->data[0]));
-    this->w.sential_page->command_target_y_editor->setText(QString::number(msg->data[1]));
-    this->w.sential_page->command_keyboard_editor->setText(QString::number(msg->data[2]));
-    this->w.sential_page->command_robot_id_editor->setText(QString::number(msg->data[3]));
+void visualization_node::Command_callback(const communicate_2025::msg::Command::SharedPtr msg ){
+    this->w.sential_page->command_target_x_editor->setText(QString::number(msg->target_position_x));
+    this->w.sential_page->command_target_y_editor->setText(QString::number(msg->target_position_y));
+    this->w.sential_page->command_keyboard_editor->setText(QString::number(msg->cmd_keyboard));
+    this->w.sential_page->command_robot_id_editor->setText(QString::number(msg->target_robot_id));
 }
 
 void visualization_node::Hitted_callback(const std_msgs::msg::Int32MultiArray::SharedPtr msg ){

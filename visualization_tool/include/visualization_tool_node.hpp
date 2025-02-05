@@ -5,6 +5,7 @@
 #include <rclcpp/rclcpp.hpp>
 #include <communicate_2025/msg/serial_info.hpp>
 #include <communicate_2025/msg/autoaim.hpp>
+#include <communicate_2025/msg/command.hpp>
 #include <std_msgs/msg/float32_multi_array.hpp>
 #include <std_msgs/msg/int32_multi_array.hpp>
 #include <geometry_msgs/msg/twist.hpp>
@@ -27,7 +28,7 @@ class visualization_node : public rclcpp::Node{
         void Chassis_ctl_callback(const geometry_msgs::msg::Twist::SharedPtr msg );
         void Interaction_ctl_callback(const std_msgs::msg::Int32MultiArray::SharedPtr msg );
         void Moudle_ctl_callback(const std_msgs::msg::Int32MultiArray::SharedPtr msg );
-        void Command_callback(const std_msgs::msg::Int32MultiArray::SharedPtr msg );
+        void Command_callback(const communicate_2025::msg::Command::SharedPtr msg );
         void Hitted_callback(const std_msgs::msg::Int32MultiArray::SharedPtr msg );
         void Shoot_status_callback(const std_msgs::msg::Int32MultiArray::SharedPtr msg );
         //比赛信息回调
@@ -61,7 +62,7 @@ class visualization_node : public rclcpp::Node{
         rclcpp::Subscription<geometry_msgs::msg::Twist>::SharedPtr Chassis_ctl_sub;
         rclcpp::Subscription<std_msgs::msg::Int32MultiArray>::SharedPtr Interaction_ctl_sub;
         rclcpp::Subscription<std_msgs::msg::Int32MultiArray>::SharedPtr Moudle_ctl_sub;
-        rclcpp::Subscription<std_msgs::msg::Int32MultiArray>::SharedPtr Command_sub;
+        rclcpp::Subscription<communicate_2025::msg::Command>::SharedPtr Command_sub;
         rclcpp::Subscription<std_msgs::msg::Int32MultiArray>::SharedPtr Hitted_sub;
         rclcpp::Subscription<std_msgs::msg::Int32MultiArray>::SharedPtr Shoot_status_sub;
         //比赛信息话题
