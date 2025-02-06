@@ -32,6 +32,8 @@ set(PROJECT_SOURCES
     src/health_bar.cpp
     Page/T_Fake_info_sender.h
     Page/T_Fake_info_sender.cpp
+    Page/T_Fake_info_sender_aim.h
+    Page/T_Fake_info_sender_aim.cpp
 )
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)

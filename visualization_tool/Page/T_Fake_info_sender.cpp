@@ -190,7 +190,7 @@ T_Fake_info_sender::~T_Fake_info_sender(){
 
 void T_Fake_info_sender::set_publish_flag(bool flag){
     this->publish_flag = flag;
-    set_read_only(flag);
+    // set_read_only(flag);
     // std::cout << "publish_flag: " << this->publish_flag << std::endl;
 }
 

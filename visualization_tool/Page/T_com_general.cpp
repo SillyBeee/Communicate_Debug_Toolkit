@@ -15,9 +15,9 @@ T_Com_general::T_Com_general(QWidget* parent)
     setWindowModality(Qt::ApplicationModal);
     setWindowButtonFlags(ElaAppBarType::CloseButtonHint);
     //2个标题
-    ElaText* Text_left = new ElaText("自瞄数据反馈");
+    ElaText* Text_left = new ElaText("视觉自瞄数据");
     Text_left->setTextPixelSize(18);
-    ElaText* Text_right = new ElaText("自瞄云台控制");
+    ElaText* Text_right = new ElaText("反馈云台数值");
     Text_right->setTextPixelSize(18);
     //各个数据标识
     ElaText* down_find_bool_label = new ElaText("find_bool");

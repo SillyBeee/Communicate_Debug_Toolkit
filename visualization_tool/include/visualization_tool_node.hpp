@@ -6,6 +6,7 @@
 #include <communicate_2025/msg/serial_info.hpp>
 #include <communicate_2025/msg/autoaim.hpp>
 #include <communicate_2025/msg/command.hpp>
+#include <communicate_2025/msg/serial_info.hpp>
 #include <std_msgs/msg/float32_multi_array.hpp>
 #include <std_msgs/msg/int32_multi_array.hpp>
 #include <geometry_msgs/msg/twist.hpp>
@@ -78,8 +79,9 @@ class visualization_node : public rclcpp::Node{
 
 
         rclcpp::Publisher<std_msgs::msg::Float32MultiArray>::SharedPtr Fake_arm_control_pub;
-
+        rclcpp::Publisher<communicate_2025::msg::SerialInfo>::SharedPtr Fake_serial_info_pub;
         std::thread Faker_arm_thread;
+        std::thread Faker_serial_thread;
 };      
 
 #endif // VISUALIZATION_TOOL_NODE_HPP

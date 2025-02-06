@@ -133,6 +133,9 @@ rclcpp::Node("visualization_node"){
     Fake_arm_control_pub = this->create_publisher<std_msgs::msg::Float32MultiArray>(
         "/engineer/arm_control", rclcpp::SensorDataQoS());
 
+    Fake_serial_info_pub = this->create_publisher<communicate_2025::msg::SerialInfo>(
+        "/shoot_info", rclcpp::SensorDataQoS());
+    
     Faker_arm_thread = std::thread([this](){
         rclcpp::WallRate loop_rate(0.05);
         while (rclcpp::ok()){
@@ -151,10 +154,31 @@ rclcpp::Node("visualization_node"){
                 // <<msg.data[3]<<","
                 // <<msg.data[4]<<","
                 // <<msg.data[5]<<","
+                // <<msg.data[6]
                 // <<std::endl;
                 Fake_arm_control_pub->publish(msg);
             }
         }
+    });
+
+    Faker_serial_thread = std::thread([this](){
+        rclcpp::WallRate loop_rate(0.05);
+        while (rclcpp::ok()){
+            if (this->w.fake_info_sender_aim_page->publish_flag){
+                auto msg = communicate_2025::msg::SerialInfo();
+                msg.yaw = this->w.fake_info_sender_aim_page->yaw_slider->value()/1000.0;
+                msg.pitch = this->w.fake_info_sender_aim_page->pitch_slider->value()/1000.0;
+                msg.is_find.data = this->w.fake_info_sender_aim_page->is_find_editor->text().toStdString()[0];
+
+                Fake_serial_info_pub->publish(msg);
+
+                std::cout<<"publish: yaw:"<<msg.yaw<<" pitch: "
+                <<msg.pitch<<" is_find: "
+                <<msg.is_find.data
+                <<std::endl;
+            }
+        }
+
     });
 }
 
@@ -173,12 +197,22 @@ void visualization_node::Serial_info_callback(const communicate_2025::msg::Seria
 
 void visualization_node::Autoaim_callback(const communicate_2025::msg::Autoaim::SharedPtr msg ){
     RCLCPP_INFO(this->get_logger(), "processing_autoaim");
+    // if (std::isnan(msg->yaw)){
+    //     RCLCPP_ERROR(this->get_logger(), "yaw is nan");
+    // }
+    // if (std::isnan(msg->pitch)){
+    //     RCLCPP_ERROR(this->get_logger(), "pitch is nan");
+    // }
     this->w.general_page->up_yaw_editor->setText(QString::number(msg->yaw));
+    // RCLCPP_INFO(this->get_logger(), "yaw is %f", msg->yaw);
     this->w.general_page->up_pitch_editor->setText(QString::number(msg->pitch));
-    
+    // RCLCPP_INFO(this->get_logger(), "pitch is %f", msg->pitch);
     this->w.general_page->up_enemy_color_editor->setText(QString::number(msg->enemy_team_color));
+    // RCLCPP_INFO(this->get_logger(), "enemy_team_color is %d", msg->enemy_team_color);
     this-> w.general_page->up_mode_editor->setText(QString::number(msg->mode));
+    // RCLCPP_INFO(this->get_logger(), "mode is %d", msg->mode);
     this->w.general_page->up_rune_flag_editor->setText(QString::number(msg->rune_flag));
+    // RCLCPP_INFO(this->get_logger(), "rune_flag is %d", msg->rune_flag);
     
 }
 
