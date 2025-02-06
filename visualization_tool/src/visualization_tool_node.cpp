@@ -172,10 +172,10 @@ rclcpp::Node("visualization_node"){
 
                 Fake_serial_info_pub->publish(msg);
 
-                std::cout<<"publish: yaw:"<<msg.yaw<<" pitch: "
-                <<msg.pitch<<" is_find: "
-                <<msg.is_find.data
-                <<std::endl;
+                // std::cout<<"publish: yaw:"<<msg.yaw<<" pitch: "
+                // <<msg.pitch<<" is_find: "
+                // <<msg.is_find.data
+                // <<std::endl;
             }
         }
 
@@ -184,7 +184,7 @@ rclcpp::Node("visualization_node"){
 
 //自瞄数据回调函数
 void visualization_node::Serial_info_callback(const communicate_2025::msg::SerialInfo::SharedPtr msg ){
-    RCLCPP_INFO(this->get_logger(), "processing_serial_info");
+    // RCLCPP_INFO(this->get_logger(), "processing_serial_info");
     this->w.general_page->down_yaw_editor->setText(QString::number(msg->yaw));
     this->w.general_page->down_pitch_editor->setText(QString::number(msg->pitch));
     
