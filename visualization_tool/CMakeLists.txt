@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
 project(visualization_tool)
-
+set(CMAKE_BUILD_TYPE Debug)
 # 找到Qt5库
 find_package(Qt5 COMPONENTS Widgets REQUIRED)
 

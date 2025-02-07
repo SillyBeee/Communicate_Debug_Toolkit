@@ -137,7 +137,7 @@ rclcpp::Node("visualization_node"){
         "/shoot_info", rclcpp::SensorDataQoS());
     
     Faker_arm_thread = std::thread([this](){
-        rclcpp::WallRate loop_rate(0.05);
+        rclcpp::WallRate loop_rate(0.01);
         while (rclcpp::ok()){
             if (this->w.fake_info_sender_page->publish_flag){
                 auto msg = std_msgs::msg::Float32MultiArray();
@@ -162,7 +162,7 @@ rclcpp::Node("visualization_node"){
     });
 
     Faker_serial_thread = std::thread([this](){
-        rclcpp::WallRate loop_rate(0.05);
+        rclcpp::WallRate loop_rate(0.01);
         while (rclcpp::ok()){
             if (this->w.fake_info_sender_aim_page->publish_flag){
                 auto msg = communicate_2025::msg::SerialInfo();
