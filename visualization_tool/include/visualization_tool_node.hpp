@@ -12,10 +12,13 @@
 #include <geometry_msgs/msg/twist.hpp>
 #include <atomic>
 #include <thread>
-#include <chrono>
+
+
+
+
 class visualization_node : public rclcpp::Node{
     public:
-        visualization_node();
+        visualization_node(MainWindow& w);
         ~visualization_node();
         //自瞄通信回调
         void Serial_info_callback(const communicate_2025::msg::SerialInfo::SharedPtr msg );
@@ -46,9 +49,10 @@ class visualization_node : public rclcpp::Node{
         
         std::atomic<int> is_blue{-1};
 
+        MainWindow* w;
         // std::thread 
 
-        MainWindow w;
+        
     private:
 
         //自瞄通信话题

@@ -5,6 +5,7 @@
 #include <QMouseEvent>
 #include <QGraphicsView>
 #include <QHBoxLayout>
+#include <QTimer>
 
 #include "ElaContentDialog.h"
 #include "ElaDockWidget.h"
@@ -25,6 +26,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     initWindow();
     initContent();
+    initTimer();
 }
 
 
@@ -65,6 +67,13 @@ void MainWindow::initContent(){
     // std::cout << "initContent  Finished" << std::endl;
 }
 
+void MainWindow::initTimer(){
+    QTimer* timer_general = new QTimer(this);
+    timer_general->setInterval(10);
+    timer_general->start();
+    connect(timer_general, &QTimer::timeout, this, &MainWindow::get_data_from_general_page);
+    
+}
 
 void MainWindow::mousePressEvent(QMouseEvent *event)
 {
@@ -85,6 +94,39 @@ void MainWindow::mouseMoveEvent(QMouseEvent *event)
 }
 
 
+
+void MainWindow::set_down_data_to_general_page(double down_yaw, double down_pitch, int down_is_find){
+    QMutexLocker locker(&general_mutex);
+    this->down_yaw = down_yaw;
+    this->down_pitch = down_pitch;
+    this->down_is_find = down_is_find;
+}
+
+void MainWindow::set_up_data_to_general_page(double up_yaw, double up_pitch, int up_enemy_color, int up_mode, int up_rune_flag){
+    QMutexLocker locker(&general_mutex);
+    this->up_yaw = up_yaw;
+    this->up_pitch = up_pitch;
+    this->up_enemy_color = up_enemy_color;
+    this->up_mode = up_mode;
+    this->up_rune_flag = up_rune_flag;
+}
+
+void MainWindow::get_data_from_general_page(){
+    QMutexLocker locker(&general_mutex);
+    // QMutexLocker locker2(&general_up_mutex);
+    std::cout<<"update success"<<std::endl;
+    this->general_page->down_find_bool_editor->setText(QString::number(this->down_is_find));
+    this->general_page->down_yaw_editor->setText(QString::number(this->down_yaw));
+    this->general_page->down_pitch_editor->setText(QString::number(this->down_pitch));
+    this->general_page->up_yaw_editor->setText(QString::number(this->up_yaw));
+    this->general_page->up_pitch_editor->setText(QString::number(this->up_pitch));
+    this->general_page->up_enemy_color_editor->setText(QString::number(this->up_enemy_color));
+    this->general_page->up_mode_editor->setText(QString::number(this->up_mode));
+    this->general_page->up_rune_flag_editor->setText(QString::number(this->up_rune_flag));
+    
+
+
+}
 MainWindow::~MainWindow()
 {
 }

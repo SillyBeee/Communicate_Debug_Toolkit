@@ -1,6 +1,9 @@
 # Communicate_Toolkit 
 为Robomaster25赛季模块Communicate_2025上下位机通信设计的基于QT的调试工具,帮助使用者快速勘误与定位问题
-<span style="color:red; font-family:'Times New Roman';">目前由于Qt线程与ros2线程冲突,可能会导致程序异常关闭,等待修复ing</span>
+```diff
+- 由于目前版本存在Qt与Ros2线程冲突的问题,可能出现程序异常崩溃的情况 
+- 请谨慎使用
+```
 ## 概览
 基于[ElaWidgetTool](https://github.com/Liniyous/ElaWidgetTools)与Qt5制作
 目前只支持Ubuntu22.04与Qt5.15.3(因为只在这里测试过QAQ)
