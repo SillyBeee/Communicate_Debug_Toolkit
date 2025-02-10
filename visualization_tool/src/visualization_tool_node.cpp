@@ -188,12 +188,13 @@ rclcpp::Node("visualization_node"){
         }
     });
     square_sender_thread = std::thread([this](){
-        rclcpp::WallRate loop_rate(1000);
+        rclcpp::WallRate loop_rate(100);
         static int count = 0;
         while (rclcpp::ok()){
             if (this->w->square_sender_page->send_flag){
-                int timer_interval = this->w->square_sender_page->time_interval->text().toInt();
-                // std::cout<<"timer_interval: "<<timer_interval<<std::endl;
+                int timer_interval = this->w->square_sender_page->time_interval->text().toInt()/10;
+
+                std::cout<<"timer_interval: "<<timer_interval<<std::endl;
                 count++;
                 if (count % (timer_interval * 2) != 0){
                     if(count<(timer_interval)){
@@ -202,8 +203,8 @@ rclcpp::Node("visualization_node"){
                         msg.pitch = 0;
                         msg.is_find.data = '1';
                         Square_info_pub->publish(msg);
-                        // std::cout<<"min"<<std::endl;
-                        // std::cout<<"count: "<<count<<std::endl;
+                        std::cout<<"min"<<std::endl;
+                        std::cout<<"count: "<<count<<std::endl;
                     }
                     else{
                         auto msg = communicate_2025::msg::SerialInfo();
@@ -211,8 +212,8 @@ rclcpp::Node("visualization_node"){
                         msg.pitch = 0;
                         msg.is_find.data = '1';
                         Square_info_pub->publish(msg);
-                        // std::cout<<"max"<<std::endl;
-                        // std::cout<<"count: "<<count<<std::endl;
+                        std::cout<<"max"<<std::endl;
+                        std::cout<<"count: "<<count<<std::endl;
                     }
                     
                 }
