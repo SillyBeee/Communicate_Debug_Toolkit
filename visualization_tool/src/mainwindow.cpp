@@ -97,6 +97,7 @@ void MainWindow::mouseMoveEvent(QMouseEvent *event)
 
 void MainWindow::set_down_data_to_general_page(double down_yaw, double down_pitch, int down_is_find){
     QMutexLocker locker(&general_mutex);
+    this->general_update_flag = true;
     this->down_yaw = down_yaw;
     this->down_pitch = down_pitch;
     this->down_is_find = down_is_find;
@@ -104,6 +105,7 @@ void MainWindow::set_down_data_to_general_page(double down_yaw, double down_pitc
 
 void MainWindow::set_up_data_to_general_page(double up_yaw, double up_pitch, int up_enemy_color, int up_mode, int up_rune_flag){
     QMutexLocker locker(&general_mutex);
+    this->general_update_flag = true;
     this->up_yaw = up_yaw;
     this->up_pitch = up_pitch;
     this->up_enemy_color = up_enemy_color;
@@ -114,6 +116,9 @@ void MainWindow::set_up_data_to_general_page(double up_yaw, double up_pitch, int
 void MainWindow::get_data_from_general_page(){
     QMutexLocker locker(&general_mutex);
     // QMutexLocker locker2(&general_up_mutex);
+    if (!this->general_update_flag){
+        return;
+    }
     std::cout<<"update success"<<std::endl;
     this->general_page->down_find_bool_editor->setText(QString::number(this->down_is_find));
     this->general_page->down_yaw_editor->setText(QString::number(this->down_yaw));
@@ -129,5 +134,13 @@ void MainWindow::get_data_from_general_page(){
 }
 MainWindow::~MainWindow()
 {
+    delete general_page;
+    delete sential_page;
+    delete engineer_page;
+    delete game_info_page;
+    delete fake_info_sender_page;
+    delete fake_info_sender_aim_page;
+    delete about_page;
+    
 }
 

@@ -44,6 +44,7 @@ public:
     //自瞄通信界面
     T_Com_general* general_page{nullptr};
     
+    bool general_update_flag = false;
     //上位机发
     double down_yaw ;
     double down_pitch ;

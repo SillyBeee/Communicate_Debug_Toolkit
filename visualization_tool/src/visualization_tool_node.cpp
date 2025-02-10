@@ -408,6 +408,10 @@ visualization_node::~visualization_node(){
     if (Faker_arm_thread.joinable()) {
             Faker_arm_thread.join();
         }
+    if (Faker_serial_thread.joinable()) {
+            Faker_serial_thread.join();
+        }
+    std::cout<<"visualization_node is destroyed"<<std::endl;
     //...existing code...
 }
 
