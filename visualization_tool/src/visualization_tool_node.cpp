@@ -139,9 +139,12 @@ rclcpp::Node("visualization_node"){
 
     Fake_serial_info_pub = this->create_publisher<communicate_2025::msg::SerialInfo>(
         "/shoot_info", rclcpp::SensorDataQoS());
+
+    Square_info_pub = this->create_publisher<communicate_2025::msg::SerialInfo>(
+        "/shoot_info", rclcpp::SensorDataQoS());
     
     Faker_arm_thread = std::thread([this](){
-        rclcpp::WallRate loop_rate(0.01);
+        rclcpp::WallRate loop_rate(100);
         while (rclcpp::ok()){
             if (this->w->fake_info_sender_page->publish_flag){
                 auto msg = std_msgs::msg::Float32MultiArray();
@@ -162,11 +165,12 @@ rclcpp::Node("visualization_node"){
                 // <<std::endl;
                 Fake_arm_control_pub->publish(msg);
             }
+        loop_rate.sleep();
         }
     });
 
     Faker_serial_thread = std::thread([this](){
-        rclcpp::WallRate loop_rate(0.01);
+        rclcpp::WallRate loop_rate(100);
         while (rclcpp::ok()){
             if (this->w->fake_info_sender_aim_page->publish_flag){
                 auto msg = communicate_2025::msg::SerialInfo();
@@ -175,15 +179,51 @@ rclcpp::Node("visualization_node"){
                 msg.is_find.data = this->w->fake_info_sender_aim_page->is_find_editor->text().toStdString()[0];
 
                 Fake_serial_info_pub->publish(msg);
-
+                loop_rate.sleep();
                 // std::cout<<"publish: yaw:"<<msg.yaw<<" pitch: "
                 // <<msg.pitch<<" is_find: "
                 // <<msg.is_find.data
                 // <<std::endl;
             }
         }
-
     });
+    square_sender_thread = std::thread([this](){
+        rclcpp::WallRate loop_rate(1000);
+        static int count = 0;
+        while (rclcpp::ok()){
+            if (this->w->square_sender_page->send_flag){
+                int timer_interval = this->w->square_sender_page->time_interval->text().toInt();
+                // std::cout<<"timer_interval: "<<timer_interval<<std::endl;
+                count++;
+                if (count % (timer_interval * 2) != 0){
+                    if(count<(timer_interval)){
+                        auto msg = communicate_2025::msg::SerialInfo();
+                        msg.yaw = this->w->square_sender_page->yaw_min_editor->text().toDouble();
+                        msg.pitch = 0;
+                        msg.is_find.data = '1';
+                        Square_info_pub->publish(msg);
+                        // std::cout<<"min"<<std::endl;
+                        // std::cout<<"count: "<<count<<std::endl;
+                    }
+                    else{
+                        auto msg = communicate_2025::msg::SerialInfo();
+                        msg.yaw = this->w->square_sender_page->yaw_max_editor->text().toDouble();
+                        msg.pitch = 0;
+                        msg.is_find.data = '1';
+                        Square_info_pub->publish(msg);
+                        // std::cout<<"max"<<std::endl;
+                        // std::cout<<"count: "<<count<<std::endl;
+                    }
+                    
+                }
+                else{
+                    count=0;
+                }
+            }
+        loop_rate.sleep();
+        }
+    });
+
 }
 
 //自瞄数据回调函数
@@ -197,15 +237,15 @@ void visualization_node::Serial_info_callback(const communicate_2025::msg::Seria
         // std::cout<<"is_find type: "<<typeid(msg->is_find.data).name()<<std::endl;
 
         if (msg->is_find.data == '0'){
-            RCLCPP_INFO(this->get_logger(), "is_find is 0 ");
+            // RCLCPP_INFO(this->get_logger(), "is_find is 0 ");
             return 0;
         }
         else if (msg->is_find.data == '1'){
-            RCLCPP_INFO(this->get_logger(), "is_find is 1");
+            // RCLCPP_INFO(this->get_logger(), "is_find is 1");
             return 1;
         }
         else{
-            RCLCPP_INFO(this->get_logger(), "is_find is not 0 or 1");
+            // RCLCPP_INFO(this->get_logger(), "is_find is not 0 or 1");
             return -1;
         }
     }();
@@ -410,6 +450,9 @@ visualization_node::~visualization_node(){
         }
     if (Faker_serial_thread.joinable()) {
             Faker_serial_thread.join();
+        }
+    if (square_sender_thread.joinable()) {
+            square_sender_thread.join();
         }
     std::cout<<"visualization_node is destroyed"<<std::endl;
     //...existing code...

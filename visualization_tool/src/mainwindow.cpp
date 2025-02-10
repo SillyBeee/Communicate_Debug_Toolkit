@@ -55,6 +55,7 @@ void MainWindow::initContent(){
     game_info_page = new T_Game_info(this);
     fake_info_sender_page = new T_Fake_info_sender(this);
     fake_info_sender_aim_page = new T_Fake_info_sender_aim(this);
+    square_sender_page = new T_Square(this);
 
     addPageNode("通信总览",general_page,ElaIconType::MagnifyingGlassChart);
     addPageNode("比赛数据总览",game_info_page,ElaIconType::GamepadModern);
@@ -62,6 +63,7 @@ void MainWindow::initContent(){
     addPageNode("工程数据总览",engineer_page,ElaIconType::Wrench);
     addPageNode("自瞄假消息发送器",fake_info_sender_aim_page,ElaIconType::Crosshairs);
     addPageNode("机械臂假消息发送器",fake_info_sender_page,ElaIconType::MessageDots);
+    addPageNode("方波发射器",square_sender_page,ElaIconType::WaveSquare);
     addPageNode("关于",about_page,ElaIconType::User);
     
     // std::cout << "initContent  Finished" << std::endl;
@@ -119,7 +121,7 @@ void MainWindow::get_data_from_general_page(){
     if (!this->general_update_flag){
         return;
     }
-    std::cout<<"update success"<<std::endl;
+    // std::cout<<"update success"<<std::endl;
     this->general_page->down_find_bool_editor->setText(QString::number(this->down_is_find));
     this->general_page->down_yaw_editor->setText(QString::number(this->down_yaw));
     this->general_page->down_pitch_editor->setText(QString::number(this->down_pitch));

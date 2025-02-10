@@ -84,8 +84,10 @@ class visualization_node : public rclcpp::Node{
 
         rclcpp::Publisher<std_msgs::msg::Float32MultiArray>::SharedPtr Fake_arm_control_pub;
         rclcpp::Publisher<communicate_2025::msg::SerialInfo>::SharedPtr Fake_serial_info_pub;
+        rclcpp::Publisher<communicate_2025::msg::SerialInfo>::SharedPtr Square_info_pub;
         std::thread Faker_arm_thread;
         std::thread Faker_serial_thread;
+        std::thread square_sender_thread;
 };      
 
 #endif // VISUALIZATION_TOOL_NODE_HPP

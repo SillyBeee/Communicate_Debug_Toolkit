@@ -11,6 +11,7 @@
 #include "T_Game_info.h"
 #include "T_Fake_info_sender.h"
 #include "T_Fake_info_sender_aim.h"
+#include "T_square.h"
 #include <QMutex>
 class T_Home;
 class T_Icon;
@@ -65,6 +66,7 @@ public:
     T_Game_info* game_info_page{nullptr};
     T_Fake_info_sender* fake_info_sender_page{nullptr};
     T_Fake_info_sender_aim* fake_info_sender_aim_page{nullptr};
+    T_Square* square_sender_page{nullptr};
 
     QMutex general_mutex;
     // QMutex general_down_mutex;

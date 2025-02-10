@@ -34,6 +34,8 @@ set(PROJECT_SOURCES
     Page/T_Fake_info_sender.cpp
     Page/T_Fake_info_sender_aim.h
     Page/T_Fake_info_sender_aim.cpp
+    Page/T_square.h
+    Page/T_square.cpp
 )
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
