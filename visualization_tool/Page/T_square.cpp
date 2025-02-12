@@ -9,10 +9,14 @@
 T_Square::T_Square(QWidget* parent)
     : ElaWidget(parent)
 {
-    setWindowTitle("自瞄方波发射器");
+    setWindowTitle("yaw轴自瞄方波发射器");
     this->setIsFixedSize(true);
     setWindowModality(Qt::ApplicationModal);
     setWindowButtonFlags(ElaAppBarType::CloseButtonHint);
+
+    QFont font;
+    font.setPointSize(14);
+    setFont(font);
 
     yaw_min_editor = new ElaLineEdit(this);
     yaw_max_editor = new ElaLineEdit(this);
@@ -30,8 +34,11 @@ T_Square::T_Square(QWidget* parent)
     });
     
     ElaText *yaw_min_text = new ElaText("方波最小幅值",this);
+    yaw_min_text->setFont(font);
     ElaText *yaw_max_text = new ElaText("方波最大幅值",this);
+    yaw_max_text->setFont(font);
     ElaText *time_interval_text = new ElaText("发送时间间隔(单位ms)",this);
+    time_interval_text->setFont(font);
 
     QHBoxLayout *yaw_min_layout = new QHBoxLayout();
     yaw_min_layout->addWidget(yaw_min_text);
