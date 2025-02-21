@@ -32,6 +32,7 @@ jobs:
     - name: Install ament_cmake and other ROS 2 tools
       run: |
         sudo apt-get install -y ros-humble-ament-cmake python3-colcon-common-extensions
+        sudo apt install ros-humble-serial-driver
 
     - name: Download Communicate_2025
       env:
