@@ -33,6 +33,13 @@ jobs:
       run: |
         sudo apt-get install -y ros-humble-ament-cmake python3-colcon-common-extensions
 
+    - name: Download Communicate_2025
+      env:
+        PAT: ${{ secrets.PAT }}
+      run: |
+        git config --global url."https://${PAT}@github.com/".insteadOf "https://github.com/"
+        git submodule update --init --recursive
+
     - name: Source ROS 2 setup
       run: |
         source /opt/ros/humble/setup.bash
