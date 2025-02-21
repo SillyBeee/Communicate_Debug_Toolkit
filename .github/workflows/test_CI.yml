@@ -1,0 +1,44 @@
+name: Build ROS2 Qt Project
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Install Qt5
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y qtbase5-dev qt5-qmake libqt5widgets5
+
+    - name: Install ROS 2 Humble
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y curl gnupg lsb-release
+        sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
+        echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
+        sudo apt-get update
+        sudo apt-get install -y ros-humble-desktop
+
+    - name: Install ament_cmake and other ROS 2 tools
+      run: |
+        sudo apt-get install -y ros-humble-ament-cmake python3-colcon-common-extensions
+
+    - name: Source ROS 2 setup
+      run: |
+        source /opt/ros/humble/setup.bash
+        echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
+
+    - name: Build project
+      run: |
+        source /opt/ros/humble/setup.bash
+        colcon build --cmake-args -DCMAKE_BUILD_TYPE=Debug
