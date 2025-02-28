@@ -66,7 +66,7 @@
 如果出现了图标与字体显示错误的问题，请在项目根目录下执行以下命令:
 
 ```bash
-cp -r ./visualization_tool/Ela_depend/Font  /usr/share/fonts/truetype
+sudo cp -r ./visualization_tool/Ela_depend/Font  /usr/share/fonts/truetype
 ```
 
 或打开项目根目录下的```visualization_tool/Ela_depend/Font```文件夹，安装其字体
