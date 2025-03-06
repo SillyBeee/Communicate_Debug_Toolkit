@@ -3,6 +3,7 @@
 
 #include "T_square.h"
 #include "ElaText.h"
+#include "ElaMessageBar.h"
 #include <QHBoxLayout>
 #include <QVBoxLayout>
 #include <iostream>
@@ -25,6 +26,11 @@ T_Square::T_Square(QWidget* parent)
 
     connect(yaw_switch,&ElaToggleSwitch::toggled,[=](bool checked){
         if(checked){
+            if (yaw_min_editor->text().isEmpty() || yaw_max_editor->text().isEmpty() || time_interval->text().isEmpty()){
+                ElaMessageBar::error(ElaMessageBarType::PositionPolicy::Top,"警告","获取到的波形参数不完整，请检查输入",0,this);
+                yaw_switch->setIsToggled(false);
+                return;
+            }
             send_flag = true;
             // std::cout<<"send_flag: "<<send_flag<<std::endl;
         }else{
