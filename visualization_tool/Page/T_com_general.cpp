@@ -30,8 +30,10 @@ T_Com_general::T_Com_general(QWidget* parent)
     up_enemy_color_label->setTextPixelSize(14);
     ElaText* up_pitch_label = new ElaText("pitch");
     up_pitch_label->setTextPixelSize(14);
-    ElaText* up_yaw_label = new ElaText("yaw");
+    ElaText* up_yaw_label = new ElaText("high_gimbal_yaw");
     up_yaw_label->setTextPixelSize(14);
+    ElaText* up_low_yaw_label = new ElaText("low_gimbal_yaw");
+    up_low_yaw_label->setTextPixelSize(14);
     ElaText* up_mode_label = new ElaText("mode");
     up_mode_label->setTextPixelSize(14);
     ElaText* up_rune_flag_label = new ElaText("rune_flag");
@@ -50,6 +52,8 @@ T_Com_general::T_Com_general(QWidget* parent)
     up_pitch_editor->setReadOnly(true);
     up_yaw_editor = new ElaLineEdit(this);
     up_yaw_editor->setReadOnly(true);
+    up_low_yaw_editor = new ElaLineEdit(this);
+    up_low_yaw_editor->setReadOnly(true);
     up_mode_editor = new ElaLineEdit(this);
     up_mode_editor->setReadOnly(true);
     up_rune_flag_editor = new ElaLineEdit(this);
@@ -87,6 +91,7 @@ T_Com_general::T_Com_general(QWidget* parent)
     QHBoxLayout* right3layout = new QHBoxLayout();
     QHBoxLayout* right4layout = new QHBoxLayout();
     QHBoxLayout* right5layout = new QHBoxLayout();
+    QHBoxLayout* right6layout = new QHBoxLayout();
     QHBoxLayout* right0layout = new QHBoxLayout();
     right0layout->addWidget(Text_right);
     right0layout->setAlignment(Qt::AlignCenter);
@@ -101,12 +106,15 @@ T_Com_general::T_Com_general(QWidget* parent)
     right4layout->addWidget(up_yaw_editor);
     right5layout->addWidget(up_pitch_label);
     right5layout->addWidget(up_pitch_editor);
+    right6layout->addWidget(up_low_yaw_label);
+    right6layout->addWidget(up_low_yaw_editor);
     QVBoxLayout* right_total_layout = new QVBoxLayout();
     right_total_layout->addLayout(right0layout);
     right_total_layout->addLayout(right1layout);
     right_total_layout->addLayout(right2layout);
     right_total_layout->addLayout(right3layout);
     right_total_layout->addLayout(right4layout);
+    right_total_layout->addLayout(right6layout);
     right_total_layout->addLayout(right5layout);
     right_total_layout->setSpacing(20);
     right_total_layout->setAlignment(Qt::AlignCenter);

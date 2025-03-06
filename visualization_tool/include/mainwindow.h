@@ -52,6 +52,7 @@ public:
     int down_is_find ;
     //下位机发
     double up_yaw ;
+    double up_low_yaw ;
     double up_pitch ;
     int up_enemy_color ;
     int up_mode ;
@@ -72,7 +73,7 @@ public:
     // QMutex general_down_mutex;
 public slots:
     void set_down_data_to_general_page(double down_yaw , double down_pitch , int down_is_find);
-    void set_up_data_to_general_page(double up_yaw, double up_pitch, int up_enemy_color, int up_mode, int up_rune_flag);
+    void set_up_data_to_general_page(double up_yaw,double up_low_yaw, double up_pitch, int up_enemy_color, int up_mode, int up_rune_flag);
     void get_data_from_general_page();
 private:
     bool m_isDragging;

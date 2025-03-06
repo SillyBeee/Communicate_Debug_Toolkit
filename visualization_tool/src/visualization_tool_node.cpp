@@ -256,12 +256,13 @@ void visualization_node::Serial_info_callback(const communicate_2025::msg::Seria
 
 void visualization_node::Autoaim_callback(const communicate_2025::msg::Autoaim::SharedPtr msg ){
     RCLCPP_INFO(this->get_logger(), "processing_autoaim");
-    double yaw = msg->yaw;
+    double up_yaw = msg->high_gimbal_yaw;
+    double low_yaw = msg->low_gimbal_yaw;
     double pitch = msg->pitch;
     int enemy_color = msg->enemy_team_color;
     int mode = msg->mode;
     int rune_flag = msg->rune_flag;
-    w->set_up_data_to_general_page(yaw, pitch, enemy_color, mode, rune_flag);
+    w->set_up_data_to_general_page(up_yaw,low_yaw, pitch, enemy_color, mode, rune_flag);
 
     
 }

@@ -105,10 +105,11 @@ void MainWindow::set_down_data_to_general_page(double down_yaw, double down_pitc
     this->down_is_find = down_is_find;
 }
 
-void MainWindow::set_up_data_to_general_page(double up_yaw, double up_pitch, int up_enemy_color, int up_mode, int up_rune_flag){
+void MainWindow::set_up_data_to_general_page(double up_yaw, double up_low_yaw, double up_pitch, int up_enemy_color, int up_mode, int up_rune_flag){
     QMutexLocker locker(&general_mutex);
     this->general_update_flag = true;
     this->up_yaw = up_yaw;
+    this->up_low_yaw = up_low_yaw;
     this->up_pitch = up_pitch;
     this->up_enemy_color = up_enemy_color;
     this->up_mode = up_mode;
