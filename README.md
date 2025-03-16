@@ -1,5 +1,7 @@
 # Communicate_Toolkit
 
+[![Build ROS2 Qt Project](https://github.com/marble703/Communicate_Debug_Toolkit/actions/workflows/test_CI.yml/badge.svg)](https://github.com/marble703/Communicate_Debug_Toolkit/actions/workflows/test_CI.yml)
+
 为Robomaster25赛季模块Communicate_2025上下位机通信设计的基于QT的调试工具,帮助使用者快速勘误与定位问题
 
 ```diff
